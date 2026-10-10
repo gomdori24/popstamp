@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ================== 완벽한 A4 인쇄 전용 스타일 (@media print) ================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0mm;
+  }
+
+  html, body {
+    width: 210mm !important;
+    height: 297mm !important;
+    background: white !important;
+    color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* 모든 화면 요소를 숨김 */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* 오직 A4 인쇄 미리보기 컨테이너와 그 자식들만 가시화 */
+  #printSheetContainer,
+  #printSheetContainer * {
+    visibility: visible !important;
+  }
+
+  #printSheetContainer {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    margin: 0 !important;
+    z-index: 99999 !important;
+  }
+}
